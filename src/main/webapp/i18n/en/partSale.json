@@ -1,0 +1,28 @@
+{
+  "entityAuditingApp": {
+    "partSale": {
+      "home": {
+        "title": "Part Sales",
+        "createLabel": "Create a new Part Sale",
+        "createOrEditLabel": "Create or edit a Part Sale",
+        "notFound": "No Part Sales found"
+      },
+      "created": "A new Part Sale is created with identifier {{ param }}",
+      "updated": "A Part Sale is updated with identifier {{ param }}",
+      "deleted": "A Part Sale is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Part Sale {{ id }}?"
+      },
+      "detail": {
+        "title": "Part Sale"
+      },
+      "name": "Name",
+      "price": "Price",
+      "createdBy": "Created By",
+      "createdAt": "Created At",
+      "lastUpdatedBy": "Last Updated By",
+      "lastUpdatedAt": "Last Updated At",
+      "priceList": "Price List"
+    }
+  }
+}

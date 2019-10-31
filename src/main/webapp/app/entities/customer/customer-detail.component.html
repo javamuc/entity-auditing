@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="customer">
+            <h2><span jhiTranslate="entityAuditingApp.customer.detail.title">Customer</span> {{customer.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="entityAuditingApp.customer.name">Name</span></dt>
+                <dd>
+                    <span>{{customer.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.customer.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{customer.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.customer.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{customer.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.customer.lastUpdatedBy">Last Updated By</span></dt>
+                <dd>
+                    <span>{{customer.lastUpdatedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.customer.lastUpdatedAt">Last Updated At</span></dt>
+                <dd>
+                    <span>{{customer.lastUpdatedAt}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/customer', customer.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

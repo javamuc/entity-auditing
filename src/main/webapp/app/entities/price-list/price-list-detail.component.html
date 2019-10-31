@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="priceList">
+            <h2><span jhiTranslate="entityAuditingApp.priceList.detail.title">Price List</span> {{priceList.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="entityAuditingApp.priceList.validFrom">Valid From</span></dt>
+                <dd>
+                    <span>{{priceList.validFrom}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.priceList.validTill">Valid Till</span></dt>
+                <dd>
+                    <span>{{priceList.validTill}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.priceList.type">Type</span></dt>
+                <dd>
+                    <span>{{priceList.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.priceList.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{priceList.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.priceList.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{priceList.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.priceList.lastUpdatedBy">Last Updated By</span></dt>
+                <dd>
+                    <span>{{priceList.lastUpdatedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.priceList.lastUpdatedAt">Last Updated At</span></dt>
+                <dd>
+                    <span>{{priceList.lastUpdatedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.priceList.customer">Customer</span></dt>
+                <dd>
+                    <div *ngIf="priceList.customer">
+                        <a [routerLink]="['/customer', priceList.customer?.id, 'view']">{{priceList.customer?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/price-list', priceList.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

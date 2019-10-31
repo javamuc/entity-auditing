@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="price">
+            <h2><span jhiTranslate="entityAuditingApp.price.detail.title">Price</span> {{price.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="entityAuditingApp.price.model">Model</span></dt>
+                <dd>
+                    <span>{{price.model}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.price.condition">Condition</span></dt>
+                <dd>
+                    <span>{{price.condition}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.price.price">Price</span></dt>
+                <dd>
+                    <span>{{price.price}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.price.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{price.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.price.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{price.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.price.lastUpdatedBy">Last Updated By</span></dt>
+                <dd>
+                    <span>{{price.lastUpdatedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.price.lastUpdatedAt">Last Updated At</span></dt>
+                <dd>
+                    <span>{{price.lastUpdatedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.price.priceList">Price List</span></dt>
+                <dd>
+                    <div *ngIf="price.priceList">
+                        <a [routerLink]="['/price-list', price.priceList?.id, 'view']">{{price.priceList?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/price', price.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

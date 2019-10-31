@@ -1,0 +1,74 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="entityAuditingApp.conditionDefinition.home.title">Condition Definitions</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-condition-definition" [routerLink]="['/condition-definition/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="entityAuditingApp.conditionDefinition.home.createLabel">
+            Create a new Condition Definition
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="conditionDefinitions?.length === 0">
+        <span jhiTranslate="entityAuditingApp.conditionDefinition.home.notFound">No conditionDefinitions found</span>
+    </div>
+    <div class="table-responsive" *ngIf="conditionDefinitions?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.conditionDefinition.definition">Definition</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.conditionDefinition.description">Description</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.conditionDefinition.createdBy">Created By</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.conditionDefinition.createdAt">Created At</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.conditionDefinition.lastUpdatedBy">Last Updated By</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.conditionDefinition.lastUpdatedAt">Last Updated At</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.conditionDefinition.priceList">Price List</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let conditionDefinition of conditionDefinitions ;trackBy: trackId">
+                <td><a [routerLink]="['/condition-definition', conditionDefinition.id, 'view' ]">{{conditionDefinition.id}}</a></td>
+                <td>{{conditionDefinition.definition}}</td>
+                <td>{{conditionDefinition.description}}</td>
+                <td>{{conditionDefinition.createdBy}}</td>
+                <td>{{conditionDefinition.createdAt | date:'medium'}}</td>
+                <td>{{conditionDefinition.lastUpdatedBy}}</td>
+                <td>{{conditionDefinition.lastUpdatedAt | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="conditionDefinition.priceList">
+                        <a [routerLink]="['/price-list', conditionDefinition.priceList?.id, 'view' ]" >{{conditionDefinition.priceList?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/condition-definition', conditionDefinition.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/condition-definition', conditionDefinition.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/condition-definition', { outlets: { popup: conditionDefinition.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

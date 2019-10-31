@@ -1,0 +1,75 @@
+{
+    "name": "PriceList",
+    "fields": [
+        {
+            "fieldName": "validFrom",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "validTill",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "lastUpdatedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastUpdatedAt",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "conditionDefinition",
+            "otherEntityRelationshipName": "priceList",
+            "relationshipName": "condition"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "deduction",
+            "otherEntityRelationshipName": "priceList",
+            "relationshipName": "deduction"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "partSale",
+            "otherEntityRelationshipName": "priceList",
+            "relationshipName": "partSale"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "price",
+            "otherEntityRelationshipName": "priceList",
+            "relationshipName": "price"
+        },
+        {
+            "relationshipName": "customer",
+            "otherEntityName": "customer",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191031113531",
+    "entityTableName": "price_list",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

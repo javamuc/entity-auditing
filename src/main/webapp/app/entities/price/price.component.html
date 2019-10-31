@@ -1,0 +1,76 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="entityAuditingApp.price.home.title">Prices</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-price" [routerLink]="['/price/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="entityAuditingApp.price.home.createLabel">
+            Create a new Price
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="prices?.length === 0">
+        <span jhiTranslate="entityAuditingApp.price.home.notFound">No prices found</span>
+    </div>
+    <div class="table-responsive" *ngIf="prices?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.price.model">Model</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.price.condition">Condition</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.price.price">Price</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.price.createdBy">Created By</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.price.createdAt">Created At</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.price.lastUpdatedBy">Last Updated By</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.price.lastUpdatedAt">Last Updated At</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.price.priceList">Price List</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let price of prices ;trackBy: trackId">
+                <td><a [routerLink]="['/price', price.id, 'view' ]">{{price.id}}</a></td>
+                <td>{{price.model}}</td>
+                <td>{{price.condition}}</td>
+                <td>{{price.price}}</td>
+                <td>{{price.createdBy}}</td>
+                <td>{{price.createdAt | date:'medium'}}</td>
+                <td>{{price.lastUpdatedBy}}</td>
+                <td>{{price.lastUpdatedAt | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="price.priceList">
+                        <a [routerLink]="['/price-list', price.priceList?.id, 'view' ]" >{{price.priceList?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/price', price.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/price', price.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/price', { outlets: { popup: price.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

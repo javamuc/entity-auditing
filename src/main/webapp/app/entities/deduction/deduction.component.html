@@ -1,0 +1,74 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="entityAuditingApp.deduction.home.title">Deductions</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-deduction" [routerLink]="['/deduction/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="entityAuditingApp.deduction.home.createLabel">
+            Create a new Deduction
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="deductions?.length === 0">
+        <span jhiTranslate="entityAuditingApp.deduction.home.notFound">No deductions found</span>
+    </div>
+    <div class="table-responsive" *ngIf="deductions?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.deduction.reason">Reason</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.deduction.price">Price</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.deduction.createdBy">Created By</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.deduction.createdAt">Created At</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.deduction.lastUpdatedBy">Last Updated By</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.deduction.lastUpdatedAt">Last Updated At</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.deduction.priceList">Price List</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let deduction of deductions ;trackBy: trackId">
+                <td><a [routerLink]="['/deduction', deduction.id, 'view' ]">{{deduction.id}}</a></td>
+                <td>{{deduction.reason}}</td>
+                <td>{{deduction.price}}</td>
+                <td>{{deduction.createdBy}}</td>
+                <td>{{deduction.createdAt | date:'medium'}}</td>
+                <td>{{deduction.lastUpdatedBy}}</td>
+                <td>{{deduction.lastUpdatedAt | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="deduction.priceList">
+                        <a [routerLink]="['/price-list', deduction.priceList?.id, 'view' ]" >{{deduction.priceList?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/deduction', deduction.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/deduction', deduction.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/deduction', { outlets: { popup: deduction.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
