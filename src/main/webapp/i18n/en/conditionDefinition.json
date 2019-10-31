@@ -1,0 +1,28 @@
+{
+  "entityAuditingApp": {
+    "conditionDefinition": {
+      "home": {
+        "title": "Condition Definitions",
+        "createLabel": "Create a new Condition Definition",
+        "createOrEditLabel": "Create or edit a Condition Definition",
+        "notFound": "No Condition Definitions found"
+      },
+      "created": "A new Condition Definition is created with identifier {{ param }}",
+      "updated": "A Condition Definition is updated with identifier {{ param }}",
+      "deleted": "A Condition Definition is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Condition Definition {{ id }}?"
+      },
+      "detail": {
+        "title": "Condition Definition"
+      },
+      "definition": "Definition",
+      "description": "Description",
+      "createdBy": "Created By",
+      "createdAt": "Created At",
+      "lastUpdatedBy": "Last Updated By",
+      "lastUpdatedAt": "Last Updated At",
+      "priceList": "Price List"
+    }
+  }
+}

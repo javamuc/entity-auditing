@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="deduction">
+            <h2><span jhiTranslate="entityAuditingApp.deduction.detail.title">Deduction</span> {{deduction.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="entityAuditingApp.deduction.reason">Reason</span></dt>
+                <dd>
+                    <span>{{deduction.reason}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.deduction.price">Price</span></dt>
+                <dd>
+                    <span>{{deduction.price}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.deduction.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{deduction.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.deduction.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{deduction.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.deduction.lastUpdatedBy">Last Updated By</span></dt>
+                <dd>
+                    <span>{{deduction.lastUpdatedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.deduction.lastUpdatedAt">Last Updated At</span></dt>
+                <dd>
+                    <span>{{deduction.lastUpdatedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.deduction.priceList">Price List</span></dt>
+                <dd>
+                    <div *ngIf="deduction.priceList">
+                        <a [routerLink]="['/price-list', deduction.priceList?.id, 'view']">{{deduction.priceList?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/deduction', deduction.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

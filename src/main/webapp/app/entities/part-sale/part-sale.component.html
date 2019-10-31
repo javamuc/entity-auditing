@@ -1,0 +1,74 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="entityAuditingApp.partSale.home.title">Part Sales</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-part-sale" [routerLink]="['/part-sale/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="entityAuditingApp.partSale.home.createLabel">
+            Create a new Part Sale
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="partSales?.length === 0">
+        <span jhiTranslate="entityAuditingApp.partSale.home.notFound">No partSales found</span>
+    </div>
+    <div class="table-responsive" *ngIf="partSales?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.partSale.name">Name</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.partSale.price">Price</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.partSale.createdBy">Created By</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.partSale.createdAt">Created At</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.partSale.lastUpdatedBy">Last Updated By</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.partSale.lastUpdatedAt">Last Updated At</span></th>
+            <th scope="col" ><span jhiTranslate="entityAuditingApp.partSale.priceList">Price List</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let partSale of partSales ;trackBy: trackId">
+                <td><a [routerLink]="['/part-sale', partSale.id, 'view' ]">{{partSale.id}}</a></td>
+                <td>{{partSale.name}}</td>
+                <td>{{partSale.price}}</td>
+                <td>{{partSale.createdBy}}</td>
+                <td>{{partSale.createdAt | date:'medium'}}</td>
+                <td>{{partSale.lastUpdatedBy}}</td>
+                <td>{{partSale.lastUpdatedAt | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="partSale.priceList">
+                        <a [routerLink]="['/price-list', partSale.priceList?.id, 'view' ]" >{{partSale.priceList?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/part-sale', partSale.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/part-sale', partSale.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/part-sale', { outlets: { popup: partSale.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

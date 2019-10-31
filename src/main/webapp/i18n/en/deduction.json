@@ -1,0 +1,28 @@
+{
+  "entityAuditingApp": {
+    "deduction": {
+      "home": {
+        "title": "Deductions",
+        "createLabel": "Create a new Deduction",
+        "createOrEditLabel": "Create or edit a Deduction",
+        "notFound": "No Deductions found"
+      },
+      "created": "A new Deduction is created with identifier {{ param }}",
+      "updated": "A Deduction is updated with identifier {{ param }}",
+      "deleted": "A Deduction is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Deduction {{ id }}?"
+      },
+      "detail": {
+        "title": "Deduction"
+      },
+      "reason": "Reason",
+      "price": "Price",
+      "createdBy": "Created By",
+      "createdAt": "Created At",
+      "lastUpdatedBy": "Last Updated By",
+      "lastUpdatedAt": "Last Updated At",
+      "priceList": "Price List"
+    }
+  }
+}

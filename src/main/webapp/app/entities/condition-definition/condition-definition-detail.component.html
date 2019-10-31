@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="conditionDefinition">
+            <h2><span jhiTranslate="entityAuditingApp.conditionDefinition.detail.title">Condition Definition</span> {{conditionDefinition.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="entityAuditingApp.conditionDefinition.definition">Definition</span></dt>
+                <dd>
+                    <span>{{conditionDefinition.definition}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.conditionDefinition.description">Description</span></dt>
+                <dd>
+                    <span>{{conditionDefinition.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.conditionDefinition.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{conditionDefinition.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.conditionDefinition.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{conditionDefinition.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.conditionDefinition.lastUpdatedBy">Last Updated By</span></dt>
+                <dd>
+                    <span>{{conditionDefinition.lastUpdatedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.conditionDefinition.lastUpdatedAt">Last Updated At</span></dt>
+                <dd>
+                    <span>{{conditionDefinition.lastUpdatedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="entityAuditingApp.conditionDefinition.priceList">Price List</span></dt>
+                <dd>
+                    <div *ngIf="conditionDefinition.priceList">
+                        <a [routerLink]="['/price-list', conditionDefinition.priceList?.id, 'view']">{{conditionDefinition.priceList?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/condition-definition', conditionDefinition.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
