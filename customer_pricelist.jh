@@ -1,0 +1,75 @@
+entity PriceList {
+    validFrom LocalDate,
+    validTill LocalDate,
+    type String,
+    createdBy String,
+    createdAt ZonedDateTime,
+    lastUpdatedBy String,
+    lastUpdatedAt ZonedDateTime
+}
+
+entity Deduction {
+	reason String,
+    price BigDecimal,
+    createdBy String,
+    createdAt ZonedDateTime,
+    lastUpdatedBy String,
+    lastUpdatedAt ZonedDateTime
+}
+
+entity PartSale {
+	name String,
+    price BigDecimal,
+    createdBy String,
+    createdAt ZonedDateTime,
+    lastUpdatedBy String,
+    lastUpdatedAt ZonedDateTime
+}
+
+entity ConditionDefinition {
+	definition String,
+    description String,
+    createdBy String,
+    createdAt ZonedDateTime,
+    lastUpdatedBy String,
+    lastUpdatedAt ZonedDateTime
+}
+
+entity Price {
+    model String,
+    condition String,
+    price BigDecimal,
+    createdBy String,
+    createdAt ZonedDateTime,
+    lastUpdatedBy String,
+    lastUpdatedAt ZonedDateTime
+}
+
+entity Customer {
+	name String,
+    createdBy String,
+    createdAt ZonedDateTime,
+    lastUpdatedBy String,
+    lastUpdatedAt ZonedDateTime
+}
+
+relationship OneToMany {
+	Customer{priceList} to PriceList
+}
+
+relationship OneToMany {
+	PriceList{condition} to ConditionDefinition
+}
+
+relationship OneToMany {
+	PriceList{deduction} to Deduction
+}
+
+relationship OneToMany {
+	PriceList{partSale} to PartSale
+}
+
+relationship OneToMany {
+	PriceList{price} to Price
+}
+
